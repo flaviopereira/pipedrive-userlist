@@ -1,0 +1,24 @@
+.search-bar {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+
+    .search-input {
+        background: url('~@/assets/icons/search.svg') 10px center #e2e2e2;
+        background-repeat: no-repeat;
+        background-size: 25px;
+        padding-left: 40px;
+    }
+}
+
+.add-person-btn {
+    margin-right: 20px;
+}
+
+.pu-person-list-container {
+    margin: 10px;
+}
+
+.load-more-container {
+    margin: 20px 0;
+}

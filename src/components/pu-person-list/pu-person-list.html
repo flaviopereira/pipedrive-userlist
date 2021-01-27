@@ -1,0 +1,55 @@
+<div class="pu-person-list">
+    <puHeader></puHeader>
+
+    <div class="search-bar / d-flex justify-content-between align-items-center">
+        <h3>People's list</h3>
+        <div>
+            <button class="add-person-btn btn btn-primary" @click="oepnAddPersonModal">Add Person</button>
+            <input class="search-input" v-model="searchFilter" @input="filterByName" type="text" name="searchFilter" placeholder="Filter by name">
+        </div>
+    </div>
+
+    <div class="pu-person-list-container">
+        <puPersonListItem v-if="filteredPersons.length" :persons="filteredPersons" @openPersonDetailModal="openPersonDetailModal"/>    
+        <h2 class="text-center" v-else>No persons to load!</h2>
+    </div>
+
+    <div class="d-flex justify-content-center load-more-container">
+        <button class="btn" :disabled="!loadMore" @click="loadMoreData">Load more</button>
+    </div>
+
+    <puModal v-if="showPersonDetailModal" @closeUserDetailModal="closePersonDetailModal">
+        <template v-slot:header>
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="text-bold">Person Information</span>
+                <button class="close-btn" @click="showPersonDetailModal = false">X</button>
+            </div>
+        </template>
+        <template v-slot:body>
+            <puPersonDetail :person="activePersonDetail"></puPersonDetail>
+        </template>
+        <template v-slot:footer>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-warn" @click="deletePerson">Delete person</button>
+                <button class="btn" @click="closePersonDetailModal">Back</button>
+            </div>
+        </template>
+    </puModal>
+
+    <puModal v-if="showAddPersonModal" @closeAddPersonModal="closeAddPersonModal">
+        <template v-slot:header>
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="text-bold">Add Person</span>
+                <a @click="closeAddPersonModal">X</a>
+            </div>
+        </template>
+        <template v-slot:body>
+            <puAddPersonForm ref="personForm" @savePersonData="savePersonData"></puAddPersonForm>
+        </template>
+        <template v-slot:footer>
+            <div class="text-right">
+                <button class="btn" @click="validateForm">Save</button>
+            </div>
+        </template>
+    </puModal>
+</div>

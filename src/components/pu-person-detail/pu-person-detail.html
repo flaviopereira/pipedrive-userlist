@@ -1,0 +1,28 @@
+<div>
+    <puPersonPicture :person="person" :size="'M'"></puPersonPicture>
+    <p class="person-name text-bold text-center">
+        {{person.name}}
+    </p>
+    <p class="person-phone text-center">
+        {{person.phone[0].value}}
+    </p>
+    <hr>
+    <div class="person-details-container d-flex">
+        <div class="person-details-data-type text-right">
+            <p>Email</p>
+            <p>Organization</p>
+            <p>Job Title</p>
+            <p>Assistant</p>
+            <p>Groups</p>
+            <p>Location</p>
+        </div>
+        <div class="person-details-data">
+            <p>{{person.email.length && person.email[0].value ? person.email[0].value : '&nbsp;'}}</p>
+            <p>{{person.org_name ? person.org_name : '&nbsp;'}}</p>
+            <p>{{person['a61150f61605f3f1dda486586ad4b9ab34317d33'] ? person['a61150f61605f3f1dda486586ad4b9ab34317d33'] : '&nbsp;'}}</p>
+            <p>&nbsp;</p>
+            <p>{{person['18ae195b582c7c4eb8b0ffaff38a69f5bf09b558'] ? person['18ae195b582c7c4eb8b0ffaff38a69f5bf09b558'] : '&nbsp;'}}</p>
+            <p>{{person.org_id ? person.org_id.address : '&nbsp;'}}</p>
+        </div>
+    </div>
+</div>

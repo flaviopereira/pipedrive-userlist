@@ -1,0 +1,19 @@
+<draggable
+    :list="persons"
+    :disabled="!enabled"
+    item-key="name"
+    class="list-group"
+    ghost-class="ghost"
+    @start="dragging = true"
+    @end="dragging = false"
+    >
+    <template #item="{ element }">
+        <div class="user-list-item / d-flex justify-content-between align-items-center" :class="{ 'draggable': enabled }" @click="$emit('openPersonDetailModal', element)">
+            <div class="user-details">
+                <p class="text-semi-bold">{{element.name}}</p>
+                <p class="org-text text-semi-bold" v-if="element.org_id"><img class="city-icon" src="@/assets/icons/city.svg"> {{element.org_id.name}}</p>
+            </div>
+            <puPersonPicture :person="element"></puPersonPicture>
+        </div>
+    </template>
+</draggable>

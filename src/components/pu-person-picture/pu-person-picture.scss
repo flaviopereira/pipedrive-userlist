@@ -1,0 +1,45 @@
+.picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .profile-pic,
+    .profile-pic-badge {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+
+    .profile-pic {
+        overflow: hidden;
+    
+        img {
+            max-width: 40px;
+            max-height: 40px;
+        }
+    }
+    
+    .profile-pic-badge {
+        background: #d2dbfb;
+        color: #40408e;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.medium {
+        .profile-pic,
+        .profile-pic-badge {
+            width: 75px;
+            height: 75px;
+        }
+
+        .profile-pic {
+            img {
+                max-width: 75px;
+                max-height: 75px;
+            }
+        }
+    }
+}

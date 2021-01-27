@@ -1,0 +1,8 @@
+<div class="picture-container" :class="{ 'small': size === 'S', 'medium': size === 'M' }">
+    <div v-if="person.picture_id" class="profile-pic">
+        <img :src="person.picture_id.pictures['128']">
+    </div>
+    <div v-if="!person.picture_id" class="profile-pic-badge">
+        {{person.first_name ? person.first_name[0] : ''}}{{person.last_name ? person.last_name[0] : ''}}
+    </div>
+</div>

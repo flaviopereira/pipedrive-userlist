@@ -1,0 +1,18 @@
+.user-list-item {
+    border: 1px solid #ccc;
+    padding: 10px 30px;
+    margin: 10px 0;
+
+    &.draggable {
+        cursor: move;
+    }
+
+    .org-text {
+        color: #8a8a8a;
+        font-size: 14px;
+
+        img {
+            width: 13px;
+        }
+    }
+}
