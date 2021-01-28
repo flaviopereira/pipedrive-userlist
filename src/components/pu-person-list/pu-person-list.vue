@@ -39,12 +39,14 @@ export default defineComponent({
     puPersonDetail
   },
   mounted () {
-    this.personsFilterParams.limit = 5
+    this.personsFilterParams.limit = 20
 
     this.loadData()
   },
   methods: {
     loadData: function () {
+      this.$store.commit('setLoader')
+
       personsService.getAllPersons(this.personsFilterParams).then(val => {
         this.nextStart = val.additional_data.pagination?.next_start
         this.loadMore = val.additional_data.pagination?.more_items_in_collection
@@ -53,11 +55,14 @@ export default defineComponent({
         this.filteredPersons = this.persons
       }).catch(error => {
         console.error(error)
+      }).finally(() => {
+        this.$store.commit('clearLoader')
       })
     },
     loadMoreData: function () {
       this.personsFilterParams.start = this.nextStart
 
+      this.$store.commit('setLoader')
       personsService.getAllPersons(this.personsFilterParams).then(val => {
         this.nextStart = val.additional_data.pagination?.next_start
         this.loadMore = val.additional_data.pagination?.more_items_in_collection
@@ -67,15 +72,21 @@ export default defineComponent({
         this.searchFilter = ''
       }).catch(error => {
         console.error(error)
+      }).finally(() => {
+        this.$store.commit('clearLoader')
       })
     },
     deletePerson: function () {
+      this.$store.commit('setLoader')
+
       personsService.deletePerson(this.activePersonDetail.id).then(() => {
         this.personsFilterParams.start = 0
         this.closePersonDetailModal()
         this.loadData()
       }).catch(error => {
         console.error(error)
+      }).finally(() => {
+        this.$store.commit('clearLoader')
       })
     },
     filterByName: function () {
@@ -101,12 +112,16 @@ export default defineComponent({
       comp.handleSubmit()
     },
     savePersonData: function (person: PersonModel) {
+      this.$store.commit('setLoader')
+
       personsService.addPerson(person).then(() => {
         this.personsFilterParams.start = 0
         this.closeAddPersonModal()
         this.loadData()
       }).catch(error => {
         console.error(error)
+      }).finally(() => {
+        this.$store.commit('clearLoader')
       })
     }
   }
