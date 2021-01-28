@@ -17,12 +17,12 @@ hr {
     }
 
     .person-details-data-type {
-        color: #4e4e4e;
+        color: $dark-grey;
         font-weight: bold;
     }
 
     .person-details-data {
-        color: #8a8a8a;
+        color: $light-grey;
         margin-left: 20px;
     }
 }
