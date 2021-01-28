@@ -1,10 +1,12 @@
 import axios from 'axios'
 
+import { API_TOKEN, API_URL } from '@/config'
+
 import { BaseFilterModel } from '@/models/base/base-filter.model'
 
 export abstract class BaseService <F extends BaseFilterModel> {
-  private readonly apiUrl: string = 'https://api.pipedrive.com/v1'
-  private readonly token: string = 'c4fd9cbd8465a838292d49db713118e8a18ed93f'
+  private readonly apiUrl: string = API_URL
+  private readonly token: string = API_TOKEN
   private readonly requestParams = {
     api_token: this.token
   }
